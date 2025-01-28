@@ -6,7 +6,7 @@ import requests
 from datetime import datetime
 
 DATA_DIR = './data'
-CUTOFF_DATE = datetime(2000, 1, 1)
+CUTOFF_DATE = datetime(1990, 1, 1)
 
 def parse_timestamp(ts):
     """Parse ISO 8601 timestamp with optional fractional seconds and Zulu time"""
@@ -76,7 +76,7 @@ for id, ip in valid_entries.items():
     time.sleep(0.3) # avoid spamming the API
 
 # save the results to a csv file
-with open(os.path.join(DATA_DIR,'host-analysis_full.csv'), 'w') as f:
+with open(os.path.join(DATA_DIR,'host-analysis.csv'), 'w') as f:
     writer = csv.writer(f)
     writer.writerow(['id', 'ip', 'country', 'countryCode', 'region', 'regionName', 'city', 'zip', 'lat', 'lon', 'timezone', 'isp', 'org', 'as', 'asname'])
     for result in results:
