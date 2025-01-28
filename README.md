@@ -1,19 +1,21 @@
 # Cosmos Hosts Analysis
 
-This project is designed to analyze and visualize host data from JSON files, providing insights into geographical distribution and ISP information.
+This project analyzes and visualizes host data from JSON files, providing insights into geographical distribution and ISP information.
 
 ## Project Structure
 
-- `host-analysis.py`: A script that processes JSON files containing host data, queries geolocation information, and saves the results to a CSV file.
-- `visualize.ipynb`: A Jupyter Notebook that visualizes the data from the CSV file, including ISP distribution and host country distribution.
-- `data/`: Directory containing JSON files with host data and the resulting CSV file.
-- `requirements.txt`: Lists the Python dependencies required for this project.
+- `host-analysis.py`: Script that processes JSON host data, queries geolocation information, and saves results to a CSV file
+- `visualize.ipynb`: Jupyter Notebook for generating visualizations (ISP distribution and geo heatmap)
+- `data/`: Directory containing:
+  - Input JSON files (Cosmos SDK address book format)
+  - Output `host-analysis.csv` with processed data
+- `requirements.txt`: Python dependencies list
 
 ## Setup
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Perseverance42/cosmos-host-analysis.git
    cd cosmos-hosts-analysis
    ```
 
@@ -44,14 +46,16 @@ This project is designed to analyze and visualize host data from JSON files, pro
 
 ## Data
 
-- The `addrsbook` JSON files in the `data/` directory are expected to be in CosmosSDKs addresbook format.
-- The script will output a CSV file named `host-analysis_full.csv` in the same directory.
+- The `addrbook` JSON files in the `data/` directory are expected to be in CosmosSDKs addresbook format.
+- The scipt tries to parse all `*.json` files in the data directory, so addrbooks from multiple hosts can be processed at once.
+- The script will output a CSV file named `host-analysis.csv` in the same directory.
 
 ## Notes
 
 - The script uses the `ip-api.com` service for geolocation data. Be mindful of the API's usage limits.
 - Ensure that the JSON files are correctly formatted to avoid processing errors.
+- A cutoff date can be specified in `host-analysis.py`, only hosts that had succesful connections after the cutoff will be processed.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details. 
+This project is licensed under the MIT License.
